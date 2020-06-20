@@ -39,17 +39,7 @@ function showError(error) {
   notificationElement.style.display = "block";
   notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
-/*
-// search field
-const searchbox = document.querySelector('.search-box');
-searchbox.addEventListener('keypress', setQuery);
 
-function setQuery(evt) {
-  if (evt.keyCode == 13) {
-    getResults(searchbox.value);
-  }
-}
-*/
 function getResults(latitude, longitude) {
   let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${key}`;
   fetch(api).then(function(response) {
