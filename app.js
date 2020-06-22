@@ -14,10 +14,8 @@ window.addEventListener("load", () => {
   const key = "47ee6d430b2fb1babf79e2e3687b3f79";
   let api;
 
-  //var outP;
   function searchHandler() {
     let opt = `${selectElement.value}`;
-    //outP.innerHTML = opt;
     api = `http://api.openweathermap.org/data/2.5/weather?q=${opt}&appid=${key}`;
     getData();
   }
@@ -26,7 +24,6 @@ window.addEventListener("load", () => {
   // weather data
   const weather = {};
   weather.temperature = {
-      //unit : "celsius"
       unit : "fahrenheit"
   }
 
@@ -67,7 +64,6 @@ window.addEventListener("load", () => {
           iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
           temperature.innerHTML =`${weather.temperature.value} ° <span>F</span>`;
           tempDescription.innerHTML = weather.description;
-          //locationElement.innerHTML = `${weather.city}, ${weather.country}`;
           cityName.innerHTML = weather.name;
           countryName.innerHTML = weather.country;
 
