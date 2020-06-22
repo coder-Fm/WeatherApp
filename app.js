@@ -1,82 +1,80 @@
-//select elements
-const notificationElement = document.querySelector(".notification");
-const locationElement = document.querySelector(".location p");
-const dateElement = document.querySelector(".date");
-const iconElement = document.querySelector(".weather-icon");
-const tempElement = document.querySelector(".temperature-value p");
-const descElement = document.querySelector(".temperature-description p");
-const hilowElement = document.querySelector(".hi-low");
+window.addEventListener("load", () => {
+  let lon;
+  let lat;
+  let tempDescription = document.querySelector(".temperature-description p");
+  let temperature = document.querySelector(".temperature-degree p");
+  let cityName = document.querySelector(".city");
+  let countryName = document.querySelector(".countryloc");
+  let iconElement = document.querySelector(".weather-icon");
 
-// weather data - API
-const weather = {};
-weather.temperature = {
-    unit : "celsius"
-}
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      lon = position.coords.longitude;
+      lat = position.coords.latitude;
 
-//App constants andvars
-const KELVIN = 273;
-//api key
-const key = "47ee6d430b2fb1babf79e2e3687b3f79";
+      const key = "47ee6d430b2fb1babf79e2e3687b3f79";
+      const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
 
-//check browser geolocaiton support
-if("geolocaiton" in navigator) {
-  navigator.geolocaiton.getCurrentPosition(setPosition, showError);
-}
-else {
-  notificationElement.style.display = "block";
-  notificationElement.innerHTML = "<p>Browser Doesn't Support Geolocation.</p>";
-}
+      // weather data
+      const weather = {};
+      weather.temperature = {
+          unit : "celsius"
+      }
+      const KELVIN = 273;
+      //
 
-// user's location (by city id, or name, by geographic coordinates)- geolocaiton services
-function setPosition(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  getResults(latitude, longitude);
-}
+      fetch(api)
+      .then(response => {
+        return response.json();
+        })
+        .then(data =>{
+          console.log(data);
 
-//show geolocaiton error
-function showError(error) {
-  notificationElement.style.display = "block";
-  notificationElement.innerHTML = `<p> ${error.message} </p>`;
-}
+          weather.country = data.sys.country; //location
+          weather.iconId = data.weather[0].icon; //icon
+          weather.temperature.value = Math.floor(data.main.temp - KELVIN); //temp
+          weather.description = data.weather[0].description;
+          weather.name = data.name;
 
-function getResults(latitude, longitude) {
-  let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${key}`;
-  fetch(api).then(function(response) {
-    let data = response.json();
-    return data;
-  })
-  .then(function(data) {
-    weather.city = data.name; // loction
-    weather.country = data.sys.country; //location
-    weather.iconId = data.weather[0].icon; //icon
-    weather.temperature.value = Math.floor(data.main.temp - KELVIN); //temp
-    weather.description = data.weather[0].description; //description
-    //weather.hilow = data.// date
-    //hi/low
-    //hi/low
+      })
+      .then(function() {
+        displayResults();
+        });
 
+        function displayResults() {
+          iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+          temperature.innerHTML =`${weather.temperature.value} ° <span>C</span>`;
+          tempDescription.innerHTML = weather.description;
+          //locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+          cityName.innerHTML = weather.name;
+          countryName.innerHTML = weather.country;
 
-  })
-  .then(function() {
-    displayResults();
+        }
+
+        // temperature conversion
+        function celsiusToFahrenheit(temperature) {
+          return (temperature * 9/5) + 32;
+        }
+
+        // user-click temperature
+        temperature.addEventListener("click", function() {
+          if(weather.temperature.value === undefined)
+            return;
+
+            if(weather.temperature.unit === "celsius") {
+
+              let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+              fahrenheit = Math.floor(fahrenheit);
+              temperature.innerHTML = `${fahrenheit}° <span>F</span>`;
+              weather.temperature.unit = "fahrenheit";
+            }
+            else {
+              temperature.innerHTML = `${weather.temperature.value}° <span>C</span>`;
+              weather.temperature.unit = "celsius";
+            }
+        });
+
     });
-}
-// end of search
+  }
 
-
-
-// display Weather
-function displayResults() {
-  iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-  tempElement.innerHTML =`${weather.temperature.value} ° <span>C</span>`;
-  descElement.innerHTML = weather.description;
-  locationElement.innerHTML = `${weather.city}, ${weather.country}`;
-  let now = new Date();
-
-  let date = document.querySelector('.location .date');
-  date.innerText = dateBuilder(now);
-
-  let hilow = document.querySelector('.hi-low');
-  hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
-}
+});
