@@ -1,0 +1,145 @@
+*{
+
+}
+
+body{
+
+  background-color: #76bcf1;
+}
+
+.weather-container{
+  display: block;
+  position: inherit;
+  margin: auto auto;
+
+  width: 350px;
+  height: 460px;
+  background-color: #55acee;
+  margin-top: 40px;
+  border-radius: 15px;
+}
+
+.location {
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    color: #fbfbfb;
+    text-align: center;
+    font-size: 1em;
+}
+
+.temperature-description,
+.temperature-degree {
+    width: 300px;
+    height:60px;
+    display: block;
+    margin: auto auto;
+    position: inherit;
+}
+
+.temperature-degree p {
+    padding: 0;
+    margin: 0;
+    color: #f1f1f1;
+    font-size: 2em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.temperature-description p{
+  padding: 0;
+  margin: 0;
+  color: #f1f1f1;
+  font-size: 2em;
+  text-align: center;
+}
+
+.temperature-degree p span {
+    color: #f1f1f1;
+    font-size: 0.9em;
+
+}
+
+
+.search-box {
+  margin-right: 8px;
+  box-shadow: inset 2px 2px 5px #adadad, inset -5px -5px 10px #fff;
+  width: 35%;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  height: 25px;
+  border: none;
+
+  display: block;
+  margin: auto auto;
+  position: inherit;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.chooseCity, select {
+  display: block;
+  position: inherit;
+  margin: auto auto;
+  font-size: 18px;
+  color: black;
+  height: 25px;
+  border: none;
+  text-align: center;
+}
+
+button {
+  margin-right: 8px;
+  width: 15%;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  height: 25px;
+  border: none;
+
+  display: block;
+  margin: auto auto;
+  position: inherit;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.app-title{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+
+    display: block;
+    position: inherit;
+    margin: auto auto;
+    font-size: 2em;
+    padding-bottom: 12px;
+
+}
+
+.app-title p{
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    color: #f1f1f1;
+
+}
+
+.weather-icon{
+    width: 300px;
+    height: 128px;
+
+    display: block;
+    position: inherit;
+    margin: auto auto;
+
+}
+
+.weather-icon img{
+    display: block;
+    margin: 0 auto;
+}
