@@ -6,10 +6,11 @@ window.addEventListener("load", () => {
   let cityName = document.querySelector(".city");
   let countryName = document.querySelector(".countryloc");
   let iconElement = document.querySelector(".weather-icon");
-
   let selectElement = document.getElementById("cityselect");
   let searchBtn = document.getElementById("searchButton");
   searchBtn.addEventListener('click', searchHandler);
+  let currentBtn = document.getElementById("currentButton");
+  currentBtn.addEventListener('click', currentHandler);
 
   const key = "47ee6d430b2fb1babf79e2e3687b3f79";
   let api;
@@ -28,16 +29,19 @@ window.addEventListener("load", () => {
   }
 
   const Rankine = 459;
+  
+  function currentHandler() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        lon = position.coords.longitude;
+        lat = position.coords.latitude;
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-      lon = position.coords.longitude;
-      lat = position.coords.latitude;
+        api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
 
-      api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
-
-      getData();
-    });
+        getData();
+      });
+    }
+    else { alert("Browser Doesn't Support Geolocation"); }
   }
 
   function getData() {
