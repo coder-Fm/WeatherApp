@@ -28,6 +28,21 @@
           <option value="Tokyo">Tokyo</option>
           <option value="Beijing">Beijing</option>
         </select>
+        
+        <script>
+          var my_options = $("option");
+          var selected = $("#cityselect").val();
+
+          my_options.sort(function(a,b) {
+            if (a.value > b.value) return 1;
+            if (a.value < b.value) return -1;
+            return 0
+          })
+
+          $("#cityselect").empty().append(my_options);
+          $("#cityselect").val(selected);
+        </script>
+        
         <button id="searchButton">Search</button>
 
         <div class="weather-container">
