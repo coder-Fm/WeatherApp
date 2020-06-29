@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style3.css">
     <title>Local Weather</title>
   </head>
   <body>
@@ -15,6 +15,7 @@
       <main>
         <section class="location">
           <div class="city">Fremont, US</div>
+          <hr>
           <div class="countryloc"></div>
           <div class="weather-icon"><img src="icons/01n.png"></div>
         </section>
@@ -22,21 +23,40 @@
           <div class="weather">Clear</div>
           <div class="temp-convert">
             <span class="celsius-convert">°C  </span>
-            <span>/</span>
+            <span class="slash">/ </span>
             <span class="fahrenheit-convert">°F</span>
           </div>
           <div class="temp">58° F</div>
         </div>
         <div class="float-container">
+          <hr>
           <div class="float-child">
-            <div class="date">Sunday</div>
+            <section class="date">Sunday</section>
           </div>
+
           <div class="float-child">
             <section class="hi-low">
-              <div class="hi">55°F/63°F</div>
+              <div class="hi">55°F/<span> 63°F</span></div>
               <div class="low"></div>
             </section>
+          </div><hr>
+
+          <div class="float-child">
+            <div class="Humidity">HUMIDITY: <p>80%</p></div>
           </div>
+
+          <div class="float-child">
+            <div class="Visibility">VISIBILITY: <p>10 mi</p></div>
+          </div><hr>
+
+          <div class="float-child">
+            <div class="FeelsLike">FEELS LIKE: <p>55° F</p></div>
+          </div>
+
+          <div class="float-child">
+            <div class="Pressure">PRESSURE: <p>29.83 inHg</p></div>
+          </div>
+          <hr>
         </div>
       </main>
     </div>
