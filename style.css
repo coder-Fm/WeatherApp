@@ -54,11 +54,23 @@ main {
   text-align: center;
 }
 
+hr {
+  display: block;
+  margin-before: 0.5em;
+  margin-after: 0.5em;
+  margin-start: auto;
+  margin-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+  width: 100%;
+}
 .current .weather {
   color: #fff;
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 5px;
+  letter-spacing: 1.7px;
 }
 
 .current .temp {
@@ -76,10 +88,15 @@ main {
 .celsius-convert {
   margin-right: 8px;
   cursor: pointer;
+  font-size: 25px;
+}
+.slash {
+  font-size: 25px;
 }
 
 .fahrenheit-convert {
   cursor: pointer;
+  font-size: 25px;
 }
 
 .location .city {
@@ -87,12 +104,13 @@ main {
   font-size: 50px;
   font-weight: 850;
   margin-bottom: 15px;
-  text-shadow: 2px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 6px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1.7px;
 }
 
 .float-container {
   padding: 5px;
-  min-width: 360px;
+  min-width: 460px;
 }
 
 .float-child {
@@ -100,22 +118,33 @@ main {
   float: left;
   padding: 20px;
 }
-
 .float-child .hi-low {
   color: #fff;
   font-size: 22px;
   font-weight: 500;
-  text-shadow: 0px 5px rgba(0, 0, 0, 0.4);
-  float: right;
+  text-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+  float: center;
+  letter-spacing: 1.7px;
 }
 
 .float-child .date {
   color: #fff;
   font-size: 22px;
   font-weight: 500;
-  text-shadow: 0px 5px rgba(0, 0, 0, 0.4);
-  float: left;
+  text-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+  float: center;
   margin-right: 20px;
+  letter-spacing: 1.7px;
+}
+
+.Visibility, .Pressure,
+.FeelsLike, .Humidity {
+  color: #7f7f7f;
+  letter-spacing: 1.7px;
+}
+.Visibility p, .Pressure p,
+.FeelsLike p, .Humidity p {
+  color: #fff;
 }
 
 .location {
