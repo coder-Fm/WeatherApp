@@ -1,145 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
 *{
-
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-
-  background-color: #76bcf1;
+body {
+  font-family: 'PT Serif', serif;
+  color: #fff;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: top center;
 }
 
-.weather-container{
-  display: block;
-  position: inherit;
-  margin: auto auto;
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
 
-  width: 350px;
-  height: 460px;
-  background-color: #55acee;
-  margin-top: 40px;
-  border-radius: 15px;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 15px 15px;
+}
+
+header input {
+  width: 100%;
+  max-width: 380px;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  color: #242424;
+  border-bottom: 3px solid #352d2d;
+  font-size: 20px;
+  font-weight: 250;
+  transition: 0.2s ease-out;
+}
+
+header input:focus {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+main {
+  flex: 1 1 100%;
+  padding: 25px 25px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.current .weather {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.current .temp {
+  color: #fff;
+  font-size: 100px;
+  font-weight: 850;
+  margin: 30px 0px;
+  text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.current .temp span {
+  font-weight: 500;
+}
+
+.celsius-convert {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.fahrenheit-convert {
+  cursor: pointer;
+}
+
+.location .city {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 850;
+  margin-bottom: 15px;
+  text-shadow: 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.float-container {
+  padding: 5px;
+  min-width: 360px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
+
+.float-child .hi-low {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  text-shadow: 0px 5px rgba(0, 0, 0, 0.4);
+  float: right;
+}
+
+.float-child .date {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  text-shadow: 0px 5px rgba(0, 0, 0, 0.4);
+  float: left;
+  margin-right: 20px;
 }
 
 .location {
-    margin: 0;
-    padding: 0;
-    padding-top: 20px;
-    color: #fbfbfb;
-    text-align: center;
-    font-size: 1em;
-}
-
-.temperature-description,
-.temperature-degree {
-    width: 300px;
-    height:60px;
-    display: block;
-    margin: auto auto;
-    position: inherit;
-}
-
-.temperature-degree p {
-    padding: 0;
-    margin: 0;
-    color: #f1f1f1;
-    font-size: 2em;
-    text-align: center;
-    cursor: pointer;
-}
-
-.temperature-description p{
-  padding: 0;
-  margin: 0;
-  color: #f1f1f1;
-  font-size: 2em;
-  text-align: center;
-}
-
-.temperature-degree p span {
-    color: #f1f1f1;
-    font-size: 0.9em;
-
-}
-
-
-.search-box {
-  margin-right: 8px;
-  box-shadow: inset 2px 2px 5px #adadad, inset -5px -5px 10px #fff;
-  width: 35%;
-  transition: all 0.2s ease-in-out;
-  appearance: none;
-  -webkit-appearance: none;
-  border-radius: 8px;
-  height: 25px;
-  border: none;
-
-  display: block;
-  margin: auto auto;
-  position: inherit;
-  margin-top: 25px;
-  margin-bottom: 20px;
-}
-
-.chooseCity, select {
-  display: block;
-  position: inherit;
-  margin: auto auto;
-  font-size: 18px;
-  color: black;
-  height: 25px;
-  border: none;
-  text-align: center;
-}
-
-button {
-  margin-right: 8px;
-  width: 15%;
-  transition: all 0.2s ease-in-out;
-  appearance: none;
-  -webkit-appearance: none;
-  border-radius: 8px;
-  height: 25px;
-  border: none;
-
-  display: block;
-  margin: auto auto;
-  position: inherit;
-  margin-top: 25px;
-  margin-bottom: 20px;
-}
-
-.app-title{
-    width: 100%;
-    height: 50px;
-    border-radius: 10px 10px 0 0;
-
-    display: block;
-    position: inherit;
-    margin: auto auto;
-    font-size: 2em;
-    padding-bottom: 12px;
-
-}
-
-.app-title p{
-    text-align: center;
-    padding: 15px;
-    margin: 0 auto;
-    font-size: 1.2em;
-    color: #f1f1f1;
-
-}
-
-.weather-icon{
-    width: 300px;
-    height: 128px;
-
-    display: block;
-    position: inherit;
-    margin: auto auto;
-
-}
-
-.weather-icon img{
-    display: block;
-    margin: 0 auto;
+  min-width: 360px;
 }
