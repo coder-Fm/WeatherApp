@@ -4,58 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>API App - WeatherApp</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-
+    <link rel="stylesheet" href="style3.css">
+    <title>Local Weather</title>
   </head>
   <body>
     <div class="app-wrap">
-      <header></header>
-    </div>
-      <div class="app-title"><p>The Weather Now</p></div>
-      <div class="container">
-        <br><button id="currentButton">Current Weather</button>
-        
-        <label class="chooseCity" for="city">Choose a City:</label>
-        <select name="cityselect" id="cityselect">
-          <option value="San Francisco">San Francisco</option>
-          <option value="New York">New York</option>
-          <option value="Houston">Houston</option>
-          <option value="Chicago">Chicago</option>
-          <option value="London">London</option>
-          <option value="Tokyo">Tokyo</option>
-          <option value="Beijing">Beijing</option>
-        </select>
-        
-        <script>
-          var my_options = $("option");
-          var selected = $("#cityselect").val();
-
-          my_options.sort(function(a,b) {
-            if (a.value > b.value) return 1;
-            if (a.value < b.value) return -1;
-            return 0
-          })
-
-          $("#cityselect").empty().append(my_options);
-          $("#cityselect").val(selected);
-        </script>
-        
-        <button id="searchButton">Search</button>
-
-        <div class="weather-container">
-          <div class="location">
-            <h1 class="city"> - <span>, </span></h1>
-            <h2 class="countryloc"> - </h2>
-          </div>
+      <header>
+        <input type="text" autocomplete="off" class="search-box" placeholder="Search City.." />
+      </header>
+      <main>
+        <section class="location">
+          <div class="city">Fremont, US</div>
+          <div class="countryloc"></div>
           <div class="weather-icon"><img src="icons/01n.png"></div>
-          <div class="temperature-degree"><p><span>F</span></p></div>
-          <div class="temperature-description"><p>Clear</p></div>
+        </section>
+        <div class="current">
+          <div class="weather">Clear</div>
+          <div class="temp-convert">
+            <span class="celsius-convert">°C  </span>
+            <span>/</span>
+            <span class="fahrenheit-convert">°F</span>
+          </div>
+          <div class="temp">58° F</div>
         </div>
-      </div>
-
+        <div class="float-container">
+          <div class="float-child">
+            <div class="date">Sunday</div>
+          </div>
+          <div class="float-child">
+            <section class="hi-low">
+              <div class="hi">55°F/63°F</div>
+              <div class="low"></div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
